@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pojcomservice SRL | Stingere Incendiu & Securitate</title>
+    <meta name="description" content="Pojcomservice SRL - Soluții complete pentru protecție împotriva incendiilor și securitate: stingătoare, reîncărcare, sisteme de alarmă și supraveghere video.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #d32f2f;
+            --primary-dark: #b71c1c;
+            --secondary: #1976d2;
+            --dark: #1a1a1a;
+            --light: #f8f9fa;
+            --gray: #666;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:'Inter',sans-serif; color:#333; line-height:1.6; background:#fff; }
+        a { text-decoration:none; color:inherit; }
+        img { max-width:100%; }
+
+        /* Header & Navigation */
+        header {
+            background: rgba(26,26,26,0.95);
+            backdrop-filter: blur(10px);
+            position:fixed;
+            width:100%;
+            z-index:1000;
+            transition:0.3s;
+        }
+        .nav-container {
+            max-width:1400px;
+            margin:auto;
+            padding:0 2rem;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            height:80px;
+        }
+        .logo {
+            font-size:1.8rem;
+            font-weight:700;
+            color:white;
+        }
+        .logo span { color:var(--primary); }
+        nav ul {
+            display:flex;
+            list-style:none;
+            gap:2rem;
+        }
+        nav a {
+            color:white;
+            font-weight:500;
+            transition:0.3s;
+        }
+        nav a:hover { color:var(--primary); }
+        .lang-switch {
+            display:flex;
+            gap:0.5rem;
+        }
+        .lang-switch button {
+            background:none;
+            border:none;
+            color:white;
+            font-weight:500;
+            cursor:pointer;
+            padding:0.5rem 0.8rem;
+            border-radius:4px;
+            transition:0.3s;
+        }
+        .lang-switch button.active {
+            background:var(--primary);
+        }
+
+        /* Hero */
+        .hero {
+            height:100vh;
+            min-height:600px;
+            background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1581092580490-4d83a1d395b7?ixlib=rb-4.0.3&auto=format&fit=crop&q=80') center/cover no-repeat;
+            display:flex;
+            align-items:center;
+            color:white;
+            text-align:center;
+        }
+        .hero-content {
+            max-width:1200px;
+            margin:auto;
+            padding:2rem;
+        }
+        .hero h1 {
+            font-size:3.5rem;
+            margin-bottom:1rem;
+        }
+        .hero p {
+            font-size:1.3rem;
+            max-width:800px;
+            margin:0 auto 2rem;
+        }
+        .btn {
+            display:inline-block;
+            background:var(--primary);
+            color:white;
+            padding:1rem 2rem;
+            border-radius:50px;
+            font-weight:600;
+            transition:0.3s;
+        }
+        .btn:hover { background:var(--primary-dark); transform:translateY(-3px); }
+
+        /* Sections */
+        section {
+            padding:100px 0;
+        }
+        .container {
+            max-width:1200px;
+            margin:auto;
+            padding:0 2rem;
+        }
+        h2 {
+            text-align:center;
+            font-size:2.8rem;
+            margin-bottom:3rem;
+            color:var(--dark);
+        }
+        h2 span { color:var(--primary); }
+
+        /* About */
+        .about-grid {
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:4rem;
+            align-items:center;
+        }
+        .about-text h3 { font-size:1.8rem; margin-bottom:1rem; color:var(--primary); }
+
+        /* Services */
+        .services-grid {
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+            gap:2rem;
+        }
+        .service-card {
+            background:white;
+            padding:2rem;
+            border-radius:12px;
+            box-shadow:0 10px 30px rgba(0,0,0,0.1);
+            text-align:center;
+            transition:0.3s;
+        }
+        .service-card:hover {
+            transform:translateY(-10px);
+            box-shadow:0 20px 40px rgba(0,0,0,0.15);
+        }
+        .service-card i {
+            font-size:3rem;
+            color:var(--primary);
+            margin-bottom:1rem;
+        }
+
+        /* Equipment */
+        .equipment-grid {
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+            gap:2rem;
+        }
+        .eq-card {
+            background:#f9f9f9;
+            border-radius:12px;
+            overflow:hidden;
+            box-shadow:0 5px 15px rgba(0,0,0,0.08);
+        }
+        .eq-card img {
+            height:200px;
+            object-fit:cover;
+        }
+        .eq-card-body {
+            padding:1.5rem;
+        }
+
+        /* Contact */
+        .contact-info {
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+            gap:2rem;
+            margin-top:3rem;
+        }
+        .contact-item {
+            text-align:center;
+            padding:2rem;
+            background:var(--light);
+            border-radius:12px;
+        }
+        .contact-item i {
+            font-size:2.5rem;
+            color:var(--primary);
+            margin-bottom:1rem;
+        }
+
+        /* Footer */
+        footer {
+            background:var(--dark);
+            color:white;
+            text-align:center;
+            padding:3rem 0;
+        }
+
+        @media (max-width:768px) {
+            .nav-container { flex-direction:column; height:auto; padding:1rem; }
+            nav ul { margin:1rem 0; }
+            .hero h1 { font-size:2.5rem; }
+            .about-grid { grid-template-columns:1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="nav-container">
+        <div class="logo">Poj<span>com</span>service</div>
+        <nav>
+            <ul>
+                <li><a href="#home" data-tr="Home">Acasă</a></li>
+                <li><a href="#about" data-tr="About Us">Despre noi</a></li>
+                <li><a href="#services" data-tr="Services">Servicii</a></li>
+                <li><a href="#equipment" data-tr="Equipment">Echipamente</a></li>
+                <li><a href="#contact" data-tr="Contacts">Contacte</a></li>
+            </ul>
+        </nav>
+        <div class="lang-switch">
+            <button data-lang="ro" class="active">RO</button>
+            <button data-lang="ru">RU</button>
+            <button data-lang="en">EN</button>
+        </div>
+    </div>
+</header>
+
+<section id="home" class="hero">
+    <div class="hero-content">
+        <h1 data-tr="Your safety is our priority">Siguranța ta este prioritatea noastră</h1>
+        <p data-tr="Complete fire protection and security solutions for homes and businesses in Moldova">Soluții complete de protecție împotriva incendiilor și securitate pentru case și afaceri din Moldova</p>
+        <a href="#contact" class="btn" data-tr="Get a free consultation">Obține o consultație gratuită</a>
+    </div>
+</section>
+
+<section id="about">
+    <div class="container">
+        <h2><span data-tr="About">Despre</span> Pojcomservice SRL</h2>
+        <div class="about-grid">
+            <div>
+                <img src="https://images.unsplash.com/photo-1581093458791-0d2f1sm3t2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Pojcomservice team">
+            </div>
+            <div class="about-text">
+                <h3 data-tr="Over 15 years protecting what matters most">Peste 15 ani protejăm ceea ce contează cel mai mult</h3>
+                <p data-tr="Pojcomservice SRL is a leading company in Moldova specialized in fire prevention and security systems. We offer complete solutions from sale and recharging of fire extinguishers to design and installation of video surveillance and alarm systems.">Pojcomservice SRL este o companie lider din Moldova specializată în prevenirea incendiilor și sisteme de securitate. Oferim soluții complete de la vânzarea și reîncărcarea stingătoarelor până la proiectarea și instalarea sistemelor de supraveghere video și alarmă.</p>
+                <p data-tr="Our team of certified specialists guarantees fast and professional service throughout the country.">Echipa noastră de specialiști autorizați garantează service rapid și profesionist pe întreg teritoriul țării.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="services" style="background:#f8f9fa;">
+    <div class="container">
+        <h2 data-tr="Our Services">Serviciile Noastre</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-fire-extinguisher"></i>
+                <h3 data-tr="Sale of fire extinguishers">Vânzare stingătoare</h3>
+                <p data-tr="Wide range of certified fire extinguishers (powder, CO2, foam) for any need">Gamă largă de stingătoare certificate (pudră, CO2, spumă) pentru orice necesitate</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-tools"></i>
+                <h3 data-tr="Recharging and maintenance">Reîncărcare și mentenanță</h3>
+                <p data-tr="Professional recharging and periodic technical verification of extinguishers">Reîncărcare profesională și verificarea tehnică periodică a stingătoarelor</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-video"></i>
+                <h3 data-tr="Video surveillance systems">Sisteme de supraveghere video</h3>
+                <p data-tr="Installation and maintenance of modern CCTV systems with remote access">Instalare și mentenanță sisteme CCTV moderne cu acces de la distanță</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-bell"></i>
+                <h3 data-tr="Security and fire alarms">Alarme de securitate și incendiu</h3>
+                <p data-tr="Complete alarm systems with connection to rapid intervention services">Sisteme complete de alarmă cu conectare la serviciile de intervenție rapidă</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="equipment">
+    <div class="container">
+        <h2 data-tr="Equipment we offer">Echipamente pe care le oferim</h2>
+        <div class="equipment-grid">
+            <div class="eq-card">
+                <img src="https://images.unsplash.com/photo-1621905252472-1c5e4e1e1e6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Stingător pudră">
+                <div class="eq-card-body">
+                    <h4 data-tr="Powder extinguishers">Stingătoare cu pudră</h4>
+                    <p>6kg / 9kg / 12kg</p>
+                </div>
+            </div>
+            <div class="eq-card">
+                <img src="https://images.unsplash.com/photo-1621905252472-9430519a7d55?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Stingător CO2">
+                <div class="eq-card-body">
+                    <h4 data-tr="CO2 extinguishers">Stingătoare cu CO2</h4>
+                    <p>2kg / 5kg</p>
+                </div>
+            </div>
+            <div class="eq-card">
+                <img src="https://images.unsplash.com/photo-1587502536261-1d2452ad5b1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Cameră supraveghere">
+                <div class="eq-card-body">
+                    <h4 data-tr="IP Cameras 4K">Camere IP 4K</h4>
+                    <p>Hikvision / Dahua</p>
+                </div>
+            </div>
+            <div class="eq-card">
+                <img src="https://images.unsplash.com/photo-1628773837890-89492d79c6b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Sistem alarmă">
+                <div class="eq-card-body">
+                    <h4 data-tr="Wireless alarm systems">Sisteme de alarmă wireless</h4>
+                    <p>Ajax Systems</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact" style="background:#f8f9fa;">
+    <div class="container">
+        <h2 data-tr="Contact us">Contactați-ne</h2>
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <h3 data-tr="Phone">Telefon</h3>
+                <p>+373 298 2 72 72<br>+373 79 901 402</p>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <h3>Email</h3>
+                <p>sacomrat@mail.ru</p>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3 data-tr="Address">Adresa</h3>
+                <p>str. Kotovski 70,<br>Comrat, UTA Gagauzia, Moldova</p>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-clock"></i>
+                <h3 data-tr="Working hours">Program de lucru</h3>
+                <p>Luni - Vineri: 08:00 - 18:00<br>Sâmbătă: 09:00 - 14:00</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2025 Pojcomservice SRL. <span data-tr="All rights reserved">Toate drepturile rezervate</span>.</p>
+    </div>
+</footer>
+
+<script>
+    const translations = {
+        ro: {
+            "Home": "Acasă",
+            "About Us": "Despre noi",
+            "Services": "Servicii",
+            "Equipment": "Echipamente",
+            "Contacts": "Contacte",
+            "Your safety is our priority": "Siguranța ta este prioritatea noastră",
+            "Complete fire protection and security solutions for homes and businesses in Moldova": "Soluții complete de protecție împotriva incendiilor și securitate pentru case și afaceri din Moldova",
+            "Get a free consultation": "Obține o consultație gratuită",
+            "About": "Despre",
+            "Over 15 years protecting what matters most": "Peste 15 ani protejăm ceea ce contează cel mai mult",
+            "Pojcomservice SRL is a leading company in Moldova specialized in fire prevention and security systems. We offer complete solutions from sale and recharging of fire extinguishers to design and installation of video surveillance and alarm systems.": "Pojcomservice SRL este o companie lider din Moldova specializată în prevenirea incendiilor și sisteme de securitate. Oferim soluții complete de la vânzarea și reîncărcarea stingătoarelor până la proiectarea și instalarea sistemelor de supraveghere video și alarmă.",
+            "Our team of certified specialists guarantees fast and professional service throughout the country.": "Echipa noastră de specialiști autorizați garantează service rapid și profesionist pe întreg teritoriul țării.",
+            "Our Services": "Serviciile Noastre",
+            "Sale of fire extinguishers": "Vânzare stingătoare",
+            "Wide range of certified fire extinguishers (powder, CO2, foam) for any need": "Gamă largă de stingătoare certificate (pudră, CO2, spumă) pentru orice necesitate",
+            "Recharging and maintenance": "Reîncărcare și mentenanță",
+            "Professional recharging and periodic technical verification of extinguishers": "Reîncărcare profesională și verificarea tehnică periodică a stingătoarelor",
+            "Video surveillance systems": "Sisteme de supraveghere video",
+            "Installation and maintenance of modern CCTV systems with remote access": "Instalare și mentenanță sisteme CCTV moderne cu acces de la distanță",
+            "Security and fire alarms": "Alarme de securitate și incendiu",
+            "Complete alarm systems with connection to rapid intervention services": "Sisteme complete de alarmă cu conectare la serviciile de intervenție rapidă",
+            "Equipment we offer": "Echipamente pe care le oferim",
+            "Powder extinguishers": "Stingătoare cu pudră",
+            "CO2 extinguishers": "Stingătoare cu CO2",
+            "IP Cameras 4K": "Camere IP 4K",
+            "Wireless alarm systems": "Sisteme de alarmă wireless",
+            "Contact us": "Contactați-ne",
+            "Phone": "Telefon",
+            "Address": "Adresa",
+            "Working hours": "Program de lucru",
+            "All rights reserved": "Toate drepturile rezervate"
+        },
+        ru: {
+            "Home": "Главная",
+            "About Us": "О нас",
+            "Services": "Услуги",
+            "Equipment": "Оборудование",
+            "Contacts": "Контакты",
+            "Your safety is our priority": "Ваша безопасность — наш приоритет",
+            "Complete fire protection and security solutions for homes and businesses in Moldova": "Комплексные решения по пожарной безопасности и охране для домов и бизнеса в Молдове",
+            "Get a free consultation": "Получить бесплатную консультацию",
+            "About": "О компании",
+            "Over 15 years protecting what matters most": "Более 15 лет защищаем то, что важно больше всего",
+            "Pojcomservice SRL is a leading company in Moldova specialized in fire prevention and security systems. We offer complete solutions from sale and recharging of fire extinguishers to design and installation of video surveillance and alarm systems.": "Pojcomservice SRL — ведущая компания в Молдове, специализирующаяся на противопожарной защите и системах безопасности. Мы предлагаем комплексные решения: от продажи и перезарядки огнетушителей до проектирования и установки систем видеонаблюдения и сигнализации.",
+            "Our team of certified specialists guarantees fast and professional service throughout the country.": "Наша команда сертифицированных специалистов гарантирует быстрое и профессиональное обслуживание по всей стране.",
+            "Our Services": "Наши услуги",
+            "Sale of fire extinguishers": "Продажа огнетушителей",
+            "Wide range of certified fire extinguishers (powder, CO2, foam) for any need": "Широкий ассортимент сертифицированных огнетушителей (порошковые, углекислотные, пенные) для любых нужд",
+            "Recharging and maintenance": "Перезарядка и обслуживание",
+            "Professional recharging and periodic technical verification of extinguishers": "Профессиональная перезарядка и периодическая техническая проверка огнетушителей",
+            "Video surveillance systems": "Системы видеонаблюдения",
+            "Installation and maintenance of modern CCTV systems with remote access": "Установка и обслуживание современных систем видеонаблюдения с удалённым доступом",
+            "Security and fire alarms": "Охранные и пожарные сигнализации",
+            "Complete alarm systems with connection to rapid intervention services": "Полные системы сигнализации с подключением к службам быстрого реагирования",
+            "Equipment we offer": "Оборудование, которое мы предлагаем",
+            "Powder extinguishers": "Порошковые огнетушители",
+            "CO2 extinguishers": "Углекислотные огнетушители",
+            "IP Cameras 4K": "IP-камеры 4K",
+            "Wireless alarm systems": "Беспроводные системы сигнализации",
+            "Contact us": "Свяжитесь с нами",
+            "Phone": "Телефон",
+            "Address": "Адрес",
+            "Working hours": "Часы работы",
+            "All rights reserved": "Все права защищены"
+        },
+        en: {
+            "Home": "Home",
+            "About Us": "About Us",
+            "Services": "Services",
+            "Equipment": "Equipment",
+            "Contacts": "Contacts",
+            "Your safety is our priority": "Your safety is our priority",
+            "Complete fire protection and security solutions for homes and businesses in Moldova": "Complete fire protection and security solutions for homes and businesses in Moldova",
+            "Get a free consultation": "Get a free consultation",
+            "About": "About",
+            "Over 15 years protecting what matters most": "Over 15 years protecting what matters most",
+            "Pojcomservice SRL is a leading company in Moldova specialized in fire prevention and security systems. We offer complete solutions from sale and recharging of fire extinguishers to design and installation of video surveillance and alarm systems.": "Pojcomservice SRL is a leading company in Moldova specialized in fire prevention and security systems. We offer complete solutions from sale and recharging of fire extinguishers to design and installation of video surveillance and alarm systems.",
+            "Our team of certified specialists guarantees fast and professional service throughout the country.": "Our team of certified specialists guarantees fast and professional service throughout the country.",
+            "Our Services": "Our Services",
+            "Sale of fire extinguishers": "Sale of fire extinguishers",
+            "Wide range of certified fire extinguishers (powder, CO2, foam) for any need": "Wide range of certified fire extinguishers (powder, CO2, foam) for any need",
+            "Recharging and maintenance": "Recharging and maintenance",
+            "Professional recharging and periodic technical verification of extinguishers": "Professional recharging and periodic technical verification of extinguishers",
+            "Video surveillance systems": "Video surveillance systems",
+            "Installation and maintenance of modern CCTV systems with remote access": "Installation and maintenance of modern CCTV systems with remote access",
+            "Security and fire alarms": "Security and fire alarms",
+            "Complete alarm systems with connection to rapid intervention services": "Complete alarm systems with connection to rapid intervention services",
+            "Equipment we offer": "Equipment we offer",
+            "Powder extinguishers": "Powder extinguishers",
+            "CO2 extinguishers": "CO2 extinguishers",
+            "IP Cameras 4K": "IP Cameras 4K",
+            "Wireless alarm systems": "Wireless alarm systems",
+            "Contact us": "Contact us",
+            "Phone": "Phone",
+            "Address": "Address",
+            "Working hours": "Working hours",
+            "All rights reserved": "All rights reserved"
+        }
+    };
+
+    document.querySelectorAll('.lang-switch button').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const lang = btn.dataset.lang;
+            document.documentElement.lang = lang === 'en' ? 'en' : lang === 'ru' ? 'ru' : 'ro';
+            
+            document.querySelectorAll('[data-tr]').forEach(el => {
+                const key = el.dataset.tr;
+                if (translations[lang] && translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+
+            document.querySelectorAll('.lang-switch button').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        });
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>
+</body>
+</html>
