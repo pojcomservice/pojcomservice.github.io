@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#d32f2f">
     <title>Pojcomservice SRL | Stingere Incendiu & Securitate</title>
     <meta name="description" content="Pojcomservice SRL - Soluții complete pentru protecție împotriva incendiilor și securitate: stingătoare, reîncărcare, sisteme de alarmă și supraveghere video.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -17,9 +18,9 @@
             --gray: #666;
         }
         * { margin:0; padding:0; box-sizing:border-box; }
-        body { font-family:'Inter',sans-serif; color:#333; line-height:1.6; background:#fff; }
+        body { font-family:'Inter',sans-serif; color:#333; line-height:1.6; background:#fff; overflow-x:hidden; }
         a { text-decoration:none; color:inherit; }
-        img { max-width:100%; }
+        img { max-width:100%; height:auto; display:block; }
 
         /* Header & Navigation */
         header {
@@ -27,6 +28,7 @@
             backdrop-filter: blur(10px);
             position:fixed;
             width:100%;
+            height:80px;
             z-index:1000;
             transition:0.3s;
         }
@@ -37,31 +39,42 @@
             display:flex;
             justify-content:space-between;
             align-items:center;
-            height:80px;
+            height:100%;
         }
         .logo {
             font-size:1.8rem;
             font-weight:700;
             color:white;
+            z-index:1001;
         }
         .logo span { color:var(--primary); }
         nav ul {
             display:flex;
             list-style:none;
-            gap:2rem;
+            gap:2.5rem;
         }
         nav a {
             color:white;
             font-weight:500;
             transition:0.3s;
+            position:relative;
         }
         nav a:hover { color:var(--primary); }
+        .hamburger {
+            display:none;
+            color:white;
+            font-size:1.8rem;
+            cursor:pointer;
+            z-index:1001;
+        }
         .lang-switch {
             display:flex;
             gap:0.5rem;
+            z-index:1001;
         }
         .lang-switch button {
             background:none;
+            border:none;
             border:none;
             color:white;
             font-weight:500;
@@ -92,17 +105,18 @@
         .hero h1 {
             font-size:3.5rem;
             margin-bottom:1rem;
+            line-height:1.2;
         }
         .hero p {
             font-size:1.3rem;
             max-width:800px;
-            margin:0 auto 2rem;
+            margin:0 auto 2.5rem;
         }
         .btn {
             display:inline-block;
             background:var(--primary);
             color:white;
-            padding:1rem 2rem;
+            padding:1rem 2.5rem;
             border-radius:50px;
             font-weight:600;
             transition:0.3s;
@@ -110,14 +124,8 @@
         .btn:hover { background:var(--primary-dark); transform:translateY(-3px); }
 
         /* Sections */
-        section {
-            padding:100px 0;
-        }
-        .container {
-            max-width:1200px;
-            margin:auto;
-            padding:0 2rem;
-        }
+        section { padding:100px 0; }
+        .container { max-width:1200px; margin:auto; padding:0 2rem; }
         h2 {
             text-align:center;
             font-size:2.8rem;
@@ -133,15 +141,14 @@
             gap:4rem;
             align-items:center;
         }
-        .about-text h3 { font-size:1.8rem; margin-bottom:1rem; color:var(--primary); }
 
-        /* Services */
-        .services-grid {
+        /* Services & Equipment */
+        .services-grid, .equipment-grid {
             display:grid;
             grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
             gap:2rem;
         }
-        .service-card {
+        .service-card, .eq-card {
             background:white;
             padding:2rem;
             border-radius:12px;
@@ -149,7 +156,7 @@
             text-align:center;
             transition:0.3s;
         }
-        .service-card:hover {
+        .service-card:hover, .eq-card:hover {
             transform:translateY(-10px);
             box-shadow:0 20px 40px rgba(0,0,0,0.15);
         }
@@ -158,26 +165,7 @@
             color:var(--primary);
             margin-bottom:1rem;
         }
-
-        /* Equipment */
-        .equipment-grid {
-            display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-            gap:2rem;
-        }
-        .eq-card {
-            background:#f9f9f9;
-            border-radius:12px;
-            overflow:hidden;
-            box-shadow:0 5px 15px rgba(0,0,0,0.08);
-        }
-        .eq-card img {
-            height:200px;
-            object-fit:cover;
-        }
-        .eq-card-body {
-            padding:1.5rem;
-        }
+        .eq-card img { height:200px; object-fit:cover; width:100%; }
 
         /* Contact */
         .contact-info {
@@ -186,31 +174,53 @@
             gap:2rem;
             margin-top:3rem;
         }
-        .contact-item {
-            text-align:center;
-            padding:2rem;
-            background:var(--light);
-            border-radius:12px;
-        }
-        .contact-item i {
-            font-size:2.5rem;
-            color:var(--primary);
-            margin-bottom:1rem;
-        }
 
         /* Footer */
-        footer {
-            background:var(--dark);
-            color:white;
-            text-align:center;
-            padding:3rem 0;
+        footer { background:var(--dark); color:white; text-align:center; padding:3rem 0; }
+
+        /* ====================== MOBILE RESPONSIVE ====================== */
+        @media (max-width: 992px) {
+            .hamburger { display:block; }
+
+            nav ul {
+                position:fixed;
+                top:80px;
+                left:0;
+                width:100%;
+                height:calc(100vh - 80px);
+                background:rgba(26,26,26,0.98);
+                backdrop-filter: blur(10px);
+                display:flex;
+                flex-direction:column;
+                align-items:center;
+                justify-content:center;
+                gap:3rem;
+                transform:translateX(100%);
+                transition:transform 0.35s ease-in-out;
+                z-index:999;
+            }
+            nav ul.active { transform:translateX(0); }
+            nav a { font-size:1.8rem; }
         }
 
-        @media (max-width:768px) {
-            .nav-container { flex-direction:column; height:auto; padding:1rem; }
-            nav ul { margin:1rem 0; }
-            .hero h1 { font-size:2.5rem; }
-            .about-grid { grid-template-columns:1fr; }
+        @media (max-width: 768px) {
+            .nav-container { padding:0 1.5rem; }
+            .hero { min-height:80vh; }
+            .hero h1 { font-size:2.6rem; }
+            .hero p { font-size:1.15rem; }
+            .container { padding:0 1rem; }
+            section { padding:70px 0; }
+            h2 { font-size:2.4rem; margin-bottom:2.5rem; }
+            .about-grid { grid-template-columns:1fr; gap:2.5rem; }
+            .btn { padding:0.9rem 2rem; font-size:1rem; }
+            .service-card i { font-size:2.5rem; }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size:2.2rem; }
+            .hero p { font-size:1rem; }
+            nav a { font-size:1.5rem; }
+            .lang-switch button { padding:0.4rem 0.6rem; font-size:0.9rem; }
         }
     </style>
 </head>
@@ -228,6 +238,9 @@
                 <li><a href="#contact" data-tr="Contacts">Contacte</a></li>
             </ul>
         </nav>
+        <div class="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
         <div class="lang-switch">
             <button data-lang="ro" class="active">RO</button>
             <button data-lang="ru">RU</button>
@@ -249,7 +262,7 @@
         <h2><span data-tr="About">Despre</span> Pojcomservice SRL</h2>
         <div class="about-grid">
             <div>
-                <img src="https://images.unsplash.com/photo-1581093458791-0d2f1sm3t2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Pojcomservice team">
+                <img src="https://images.unsplash.com/photo-1611897494224-b6f4f6f1e4e3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80" alt="Echipa Pojcomservice">
             </div>
             <div class="about-text">
                 <h3 data-tr="Over 15 years protecting what matters most">Peste 15 ani protejăm ceea ce contează cel mai mult</h3>
@@ -324,7 +337,7 @@
     </div>
 </section>
 
-<section id="contact" style="background:#f8f9fa;">
+<section id="contact" style="background:#f8f8f9;">
     <div class="container">
         <h2 data-tr="Contact us">Contactați-ne</h2>
         <div class="contact-info">
@@ -461,11 +474,13 @@
         }
     };
 
+    // Language switch
     document.querySelectorAll('.lang-switch button').forEach(btn => {
         btn.addEventListener('click', () => {
             const lang = btn.dataset.lang;
-            document.documentElement.lang = lang === 'en' ? 'en' : lang === 'ru' ? 'ru' : 'ro';
-            
+
+            document.documentElement.lang = lang;
+
             document.querySelectorAll('[data-tr]').forEach(el => {
                 const key = el.dataset.tr;
                 if (translations[lang] && translations[lang][key]) {
@@ -475,6 +490,28 @@
 
             document.querySelectorAll('.lang-switch button').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
+        });
+    });
+
+    // Mobile menu toggle
+    const hamburger = document.querySelector('.hamburger');
+    const menu = document.querySelector('nav ul');
+    const icon = hamburger.querySelector('i');
+
+    hamburger.addEventListener('click', () => {
+        menu.classList.toggle('active');
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-xmark');
+        document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
+    });
+
+    // Close menu when clicking a link
+    document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', () => {
+            menu.classList.remove('active');
+            icon.classList.remove('fa-xmark');
+            icon.classList.add('fa-bars');
+            document.body.style.overflow = '';
         });
     });
 
