@@ -524,6 +524,15 @@
             });
         });
     });
+
+    // Setează limba rusă ca implicită la încărcarea paginii
+    document.addEventListener('DOMContentLoaded', () => {
+        const ruButton = document.querySelector('.lang-switch button[data-lang="ru"]');
+        if (ruButton && !ruButton.classList.contains('active')) {
+            ruButton.click();
+        }
+    });
+    
 </script>
 </body>
 </html>
