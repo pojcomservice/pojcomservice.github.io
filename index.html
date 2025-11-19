@@ -474,30 +474,31 @@
         }
     };
 
-    // Language switch
-    document.querySelectorAll('.lang-switch button').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const lang = btn.dataset.lang;
-
-            document.documentElement.lang = lang;
-
-            document.querySelectorAll('[data-tr]').forEach(el => {
-                const key = el.dataset.tr;
-                if (translations[lang] && translations[lang][key]) {
-                    el.textContent = translations[lang][key];
-                }
-            });
-
-            document.querySelectorAll('.lang-switch button').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
+    function setLanguage(lang) {
+        document.documentElement.lang = lang;
+        document.querySelectorAll('[data-tr]').forEach(el => {
+            const key = el.dataset.tr;
+            if (translations[lang] && translations[lang][key]) {
+                el.textContent = translations[lang][key];
+            }
         });
+        // Actualizează butonul activ
+        document.querySelectorAll('.lang-switch button').forEach(b => b.classList.remove('active'));
+        const activeBtn = document.querySelector(`.lang-switch button[data-lang="${lang}"]`);
+        if (activeBtn) activeBtn.classList.add('active');
+    }
+
+    // Click pe butoanele de limbă
+    document.querySelectorAll('.lang-switch button').forEach(btn => {
+        btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
     });
 
-    document.addEventListener('DOMContentLoaded', () => {
-        setLanguage('ru');
+    // === FORȚEAZĂ RUSĂ LA ÎNCĂRCARE (asta era problema) ===
+    window.addEventListener('load', () => {
+        setLanguage('ru');   // direct, fără click simulat
     });
-    
-    // Mobile menu toggle
+
+    // Restul funcționalităților tale (meniu mobil, smooth scroll etc.)
     const hamburger = document.querySelector('.hamburger');
     const menu = document.querySelector('nav ul');
     const icon = hamburger.querySelector('i');
@@ -509,7 +510,6 @@
         document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
     });
 
-    // Close menu when clicking a link
     document.querySelectorAll('nav a').forEach(link => {
         link.addEventListener('click', () => {
             menu.classList.remove('active');
@@ -519,7 +519,6 @@
         });
     });
 
-    // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
@@ -528,7 +527,6 @@
             });
         });
     });
-    
 </script>
 </body>
 </html>
