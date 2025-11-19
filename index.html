@@ -493,6 +493,10 @@
         });
     });
 
+    document.addEventListener('DOMContentLoaded', () => {
+        setLanguage('ru');
+    });
+    
     // Mobile menu toggle
     const hamburger = document.querySelector('.hamburger');
     const menu = document.querySelector('nav ul');
@@ -523,14 +527,6 @@
                 behavior: 'smooth'
             });
         });
-    });
-
-    // Setează limba rusă ca implicită la încărcarea paginii
-    document.addEventListener('DOMContentLoaded', () => {
-        const ruButton = document.querySelector('.lang-switch button[data-lang="ru"]');
-        if (ruButton && !ruButton.classList.contains('active')) {
-            ruButton.click();
-        }
     });
     
 </script>
