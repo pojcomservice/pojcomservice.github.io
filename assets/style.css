@@ -1,0 +1,59 @@
+img { 
+    max-width: 100%; 
+    height: auto; 
+    display: block; 
+}
+
+.hero-image {
+    width: 400px;
+    height: auto;
+}
+
+.logo-img {
+    height: 45px;
+    width: auto;
+    cursor: pointer;
+}
+
+.hero { 
+    width: 100%; 
+    height: 350px; 
+    object-fit: cover; 
+    border-radius: 
+    10px; 
+}
+.center-img { 
+    display: block; 
+    margin: 0 auto; 
+}
+.image-grid { 
+    display: grid; 
+    grid-template-columns: 
+    repeat(auto-fit, 
+    minmax(250px,1fr)); 
+    gap: 20px; 
+}
+.img-style { 
+    border-radius: 12px; 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2); 
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.logo-img {
+    width: 60px;
+    height: 60px;
+    margin-right: 12px;
+}
+
+.logo-span {
+    color: #ff4d00;
+}
